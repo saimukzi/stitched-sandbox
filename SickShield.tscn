@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://drensbm5vt81e"]
+
+[ext_resource type="Texture2D" uid="uid://nnsprnehn0dl" path="res://chess2.png" id="1_iosql"]
+[ext_resource type="Script" path="res://SickShield.gd" id="2_vsiwd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjwy8"]
+render_priority = 1
+no_depth_test = true
+albedo_texture = ExtResource("1_iosql")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_61opc"]
+material = SubResource("StandardMaterial3D_sjwy8")
+flip_faces = true
+orientation = 2
+
+[node name="SickShield" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_61opc")
+script = ExtResource("2_vsiwd")

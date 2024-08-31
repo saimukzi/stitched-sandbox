@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmfgt5i0lapjn"]
+[gd_scene load_steps=7 format=3 uid="uid://bmfgt5i0lapjn"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_kcc3a"]
 [ext_resource type="Script" path="res://DebugLayer.gd" id="2_2aymh"]
@@ -7,6 +7,10 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_8kb87"]
 size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="Environment" id="Environment_cel62"]
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_kcc3a")
@@ -43,3 +47,6 @@ transform = Transform3D(0.748435, -0.364465, 0.554085, 0, 0.835462, 0.549548, -0
 
 [node name="DebugLayer" type="Node3D" parent="."]
 script = ExtResource("2_2aymh")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cel62")

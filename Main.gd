@@ -11,9 +11,7 @@ var xr_is_focussed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if(OS.get_name()=="Android"):
-		$Runtime.xr_enabled = true
-	if $Runtime.xr_enabled:
+	if G.xr_enabled:
 		xr_interface = XRServer.find_interface("OpenXR")
 		if xr_interface and xr_interface.is_initialized():
 			print("OpenXR instantiated successfully.")

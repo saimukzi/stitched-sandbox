@@ -71,17 +71,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var runtime = _get_runtime()
-	if runtime == null: return
-
 	# rotate
-	if runtime.xr_enabled:
+	if G.xr_enabled:
 		var p = rightHandNode.get_vector2("primary").x
 		self.visible = p!=0
-		#self.visible = true
-
-var runtime
-func _get_runtime():
-	if runtime == null:
-		runtime = get_node("/root/Main/Runtime")
-	return runtime

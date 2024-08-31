@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmfgt5i0lapjn"]
+[gd_scene load_steps=6 format=3 uid="uid://bmfgt5i0lapjn"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_kcc3a"]
 [ext_resource type="Script" path="res://DebugLayer.gd" id="2_2aymh"]
 [ext_resource type="Script" path="res://Player.gd" id="2_b4nir"]
 [ext_resource type="Script" path="res://SickBox.gd" id="3_3xkf0"]
-[ext_resource type="Script" path="res://Runtime.gd" id="3_cg1rk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8kb87"]
 size = Vector3(0.05, 0.05, 0.05)
@@ -44,7 +43,3 @@ transform = Transform3D(0.748435, -0.364465, 0.554085, 0, 0.835462, 0.549548, -0
 
 [node name="DebugLayer" type="Node3D" parent="."]
 script = ExtResource("2_2aymh")
-
-[node name="Runtime" type="Node" parent="."]
-script = ExtResource("3_cg1rk")
-camera = NodePath("../Player/XRCamera3D")

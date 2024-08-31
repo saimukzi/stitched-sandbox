@@ -1,7 +1,5 @@
 extends MeshInstance3D
 
-var camera : XRCamera3D
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -10,9 +8,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 const VISIBLE_THRESHOLD = tan(PI/6)**2
 func _process(delta: float) -> void:
-	if camera == null:
-		var runtime = get_node("/root/Main/Runtime")
-		camera = runtime.get_node(runtime.camera)
+	var camera = G.camera
 	if camera == null: return
 	var camera_position = camera.global_position
 	var camera_ray = -camera.global_basis.z

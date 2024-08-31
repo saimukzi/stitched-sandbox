@@ -75,3 +75,5 @@ func _process(delta: float) -> void:
 	if G.xr_enabled:
 		var p = rightHandNode.get_vector2("primary").x
 		self.visible = p!=0
+	else:
+		self.visible = false

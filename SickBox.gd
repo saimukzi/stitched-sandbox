@@ -77,3 +77,4 @@ func _process(delta: float) -> void:
 		self.visible = p!=0
 	else:
 		self.visible = false
+		self.get_parent().remove_child(self)

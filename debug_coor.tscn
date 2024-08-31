@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://hpyum0c1kutc"]
+
+[ext_resource type="Script" path="res://debug_coor.gd" id="1_q4bdw"]
+
+[node name="DebugCoor" type="Node3D"]
+script = ExtResource("1_q4bdw")
+direction = 5
+offset = Vector3i(2, 2, -4)
+
+[node name="Label3D" type="Label3D" parent="."]
+double_sided = false
+modulate = Color(1, 1, 1, 0.498039)
+outline_modulate = Color(0, 0, 0, 0.498039)
+text = "8888"
+font_size = 128
+outline_size = 64

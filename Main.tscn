@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmfgt5i0lapjn"]
+[gd_scene load_steps=9 format=3 uid="uid://bmfgt5i0lapjn"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_kcc3a"]
 [ext_resource type="Script" path="res://Player.gd" id="2_b4nir"]
 [ext_resource type="Script" path="res://SickBox.gd" id="3_3xkf0"]
 [ext_resource type="Script" path="res://debug_point_group.gd" id="5_c148b"]
 [ext_resource type="Script" path="res://debug_line_group.gd" id="6_1t7ro"]
+[ext_resource type="Script" path="res://debug_coor_group.gd" id="6_n4b40"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8kb87"]
 size = Vector3(0.05, 0.05, 0.05)
@@ -53,6 +54,9 @@ script = ExtResource("5_c148b")
 
 [node name="DebugLineGroup" type="Node3D" parent="DebugLayer"]
 script = ExtResource("6_1t7ro")
+
+[node name="DebugCoorGroup" type="Node3D" parent="DebugLayer"]
+script = ExtResource("6_n4b40")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cel62")

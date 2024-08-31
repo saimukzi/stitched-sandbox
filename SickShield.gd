@@ -8,8 +8,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 const VISIBLE_THRESHOLD = tan(PI/6)**2
 func _process(delta: float) -> void:
-	var camera = G.camera
-	if camera == null: return
+	var camera = get_viewport().get_camera_3d()
 	var camera_position = camera.global_position
 	var camera_ray = -camera.global_basis.z
 	var position_diff = self.global_position - camera_position

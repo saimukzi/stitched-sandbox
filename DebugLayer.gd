@@ -20,6 +20,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var camera = G.camera
-	if camera == null: return
+	var camera = get_viewport().get_camera_3d()
 	camera_global_position_i = camera.global_position.floor()

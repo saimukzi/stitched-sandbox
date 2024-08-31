@@ -1,6 +1,5 @@
 extends Node
 
-var camera : XRCamera3D
 var xr_enabled : bool = false
 var screen_size : Vector2i
 

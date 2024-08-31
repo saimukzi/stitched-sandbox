@@ -1,7 +1,6 @@
 extends Node3D
 
-#var runtime : Node
-var xr_enabled : bool = false
+var related_position:Vector3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,6 +10,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var camera = G.camera
 	if camera == null: return
+	
+	# position
+	var camera_global_position_i = get_parent().camera_global_position_i
+	self.global_position = camera_global_position_i + related_position
+	
+	# face angle
 	if G.xr_enabled:
 		look_at(camera.global_position, camera.global_basis.y)
 	else:

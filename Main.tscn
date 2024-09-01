@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://debug_point_group.gd" id="5_c148b"]
 [ext_resource type="Script" path="res://debug_line_group.gd" id="6_1t7ro"]
 [ext_resource type="Script" path="res://debug_coor_group.gd" id="6_n4b40"]
-[ext_resource type="PackedScene" uid="uid://cw1bx8ua27l02" path="res://cube.blend" id="9_24ulw"]
+[ext_resource type="PackedScene" uid="uid://cw1bx8ua27l02" path="res://unit_slide.blend" id="9_24ulw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y4pwh"]
 
@@ -19,14 +19,14 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0juei"]
-size = Vector3(4, 1, 4)
+size = Vector3(16, 1, 16)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcvl7"]
 albedo_color = Color(0, 0.498039, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wnec4"]
 material = SubResource("StandardMaterial3D_kcvl7")
-size = Vector3(4, 1, 4)
+size = Vector3(16, 1, 16)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3fsl7"]
 
@@ -92,7 +92,7 @@ script = ExtResource("6_n4b40")
 environment = SubResource("Environment_cel62")
 
 [node name="TestFloor" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -1, -14)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -101,16 +101,13 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 8)
 shape = SubResource("BoxShape3D_0juei")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 8)
 mesh = SubResource("BoxMesh_wnec4")
 skeleton = NodePath("")
-
-[node name="cube" parent="." instance=ExtResource("9_24ulw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="SafeBox" type="Area3D" parent="."]
 transform = Transform3D(256, 0, 0, 0, 256, 0, 0, 0, 256, 0, 0, 0)
@@ -119,5 +116,8 @@ collision_mask = 2147483648
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SafeBox"]
 shape = SubResource("BoxShape3D_3fsl7")
+
+[node name="unit_slide" parent="." instance=ExtResource("9_24ulw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, -2)
 
 [connection signal="body_exited" from="SafeBox" to="Player" method="_on_safe_box_body_exited"]

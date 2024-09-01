@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmfgt5i0lapjn"]
+[gd_scene load_steps=10 format=3 uid="uid://bmfgt5i0lapjn"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_kcc3a"]
 [ext_resource type="Script" path="res://Player.gd" id="2_b4nir"]
 [ext_resource type="Script" path="res://SickBox.gd" id="3_3xkf0"]
+[ext_resource type="Script" path="res://fps_counter.gd" id="4_xl46o"]
 [ext_resource type="Script" path="res://debug_point_group.gd" id="5_c148b"]
 [ext_resource type="Script" path="res://debug_line_group.gd" id="6_1t7ro"]
 [ext_resource type="Script" path="res://debug_coor_group.gd" id="6_n4b40"]
@@ -40,6 +41,11 @@ mesh = SubResource("BoxMesh_8kb87")
 [node name="SickBox" type="Node3D" parent="Player"]
 script = ExtResource("3_3xkf0")
 rightHand = NodePath("../RightHand")
+
+[node name="FpsCounter" type="Label3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
+text = "8888"
+script = ExtResource("4_xl46o")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -1.5)

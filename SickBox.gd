@@ -4,9 +4,12 @@ const sick_shield_tscn = preload("res://SickShield.tscn")
 
 @export var rightHand : NodePath
 var rightHandNode
+var player: CharacterBody3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player = get_node("/root/Main/Player")
+	
 	rightHandNode = get_node(rightHand)
 
 	var sick_shield_node
@@ -74,7 +77,7 @@ func _process(delta: float) -> void:
 	# rotate
 	if G.xr_enabled:
 		var p = rightHandNode.get_vector2("primary").x
-		self.visible = p!=0
+		self.visible = (p!=0) or (not player.is_on_floor())
 	else:
 		self.visible = false
 		self.get_parent().remove_child(self)

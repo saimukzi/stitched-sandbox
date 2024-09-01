@@ -4,10 +4,19 @@ extends CharacterBody3D
 @onready var _righthand = $XROrigin3D/RightHand
 @onready var _camera = $XROrigin3D/XRCamera3D
 
+const JUMP_HEIGHT = 1.1
+var _jump_vec : Vector3
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	MouseCapture.mouse_motion.connect(_on_mouse_motion)
 
+	var g:float = ProjectSettings.get_setting("physics/3d/default_gravity")
+	var gv:Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
+	
+	_jump_vec = -((2*JUMP_HEIGHT*g)**0.5)*gv
+
+#const JUMP_VEC = Gravity.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -39,6 +48,12 @@ func _physics_process(delta: float) -> void:
 	if velocity_ctrl.length() > 1:
 		velocity_ctrl = velocity_ctrl.normalized()
 	velocity_ctrl = transform.basis * velocity_ctrl
+
+	if self.is_on_floor():
+		var jump = false
+		jump = jump or Input.is_action_pressed("jump")
+		jump = jump or (G.xr_enabled and _righthand.is_button_pressed("ax_button"))
+		if jump: velocity_ctrl += _jump_vec
 	
 	velocity = velocity_ctrl + get_gravity()*delta + ori_y * Vector3.UP
 

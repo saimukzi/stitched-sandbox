@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://debug_coor_group.gd" id="6_n4b40"]
 [ext_resource type="PackedScene" uid="uid://cw1bx8ua27l02" path="res://cube.blend" id="9_24ulw"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t4lwr"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y4pwh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8kb87"]
 size = Vector3(0.05, 0.05, 0.05)
@@ -37,12 +37,13 @@ script = ExtResource("1_kcc3a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
 collision_layer = 2147483649
 axis_lock_angular_y = true
+floor_constant_speed = true
 floor_max_angle = 1.39626
 script = ExtResource("2_b4nir")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_t4lwr")
+shape = SubResource("CapsuleShape3D_y4pwh")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="Player"]
 

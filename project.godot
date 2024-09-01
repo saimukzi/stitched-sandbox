@@ -57,6 +57,14 @@ mouse_capture_disable={
 ]
 }
 
+[internationalization]
+
+locale/locale_filter_mode=0
+
+[layer_names]
+
+3d_physics/layer_32="safe box"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

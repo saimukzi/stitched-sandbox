@@ -1,4 +1,8 @@
-extends XROrigin3D
+extends CharacterBody3D
+
+@onready var _lefthand = $XROrigin3D/LeftHand
+@onready var _righthand = $XROrigin3D/RightHand
+@onready var _camera = $XROrigin3D/XRCamera3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -6,34 +10,39 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	# move
-	var velocity = Vector3.ZERO
-	if Input.is_action_pressed("move_front"):
-		velocity.z -= 1
-	if Input.is_action_pressed("move_back"):
-		velocity.z += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	velocity = velocity.normalized()
-	if G.xr_enabled:
-		var p = $LeftHand.get_vector2("primary")
-		velocity.x += p.x
-		velocity.z -= p.y
-	if velocity.length() > 1:
-		velocity = velocity.normalized()
-	velocity *= delta
-	velocity = transform.basis * velocity
-	position += velocity
-	
+func _physics_process(delta: float) -> void:
 	# rotate
 	if G.xr_enabled:
 		var rad = 0
-		var p = $RightHand.get_vector2("primary")
+		var p = _righthand.get_vector2("primary")
 		rad -= p.x * delta * PI/2
 		rotate_y(rad)
+
+	# move
+	#var velocity = Vector3.ZERO
+	var ori_y = velocity.y
+	
+	var velocity_ctrl = Vector3.ZERO
+	if Input.is_action_pressed("move_front"):
+		velocity_ctrl.z -= 1
+	if Input.is_action_pressed("move_back"):
+		velocity_ctrl.z += 1
+	if Input.is_action_pressed("move_left"):
+		velocity_ctrl.x -= 1
+	if Input.is_action_pressed("move_right"):
+		velocity_ctrl.x += 1
+	velocity_ctrl = velocity_ctrl.normalized()
+	if G.xr_enabled:
+		var p = _lefthand.get_vector2("primary")
+		velocity_ctrl.x += p.x
+		velocity_ctrl.z -= p.y
+	if velocity_ctrl.length() > 1:
+		velocity_ctrl = velocity_ctrl.normalized()
+	velocity_ctrl = transform.basis * velocity_ctrl
+	
+	velocity = velocity_ctrl + get_gravity()*delta + ori_y * Vector3.UP
+
+	move_and_slide()
 
 func _on_mouse_motion(event: InputEventMouseMotion):
 	var dx:float = event.relative.x
@@ -42,13 +51,13 @@ func _on_mouse_motion(event: InputEventMouseMotion):
 	rotate_y(-dx*PI/3/G.screen_size.x)
 	
 	var drx = -dy*PI/3/G.screen_size.x
-	var now_rx = $XRCamera3D.rotation.x
+	var now_rx = _camera.rotation.x
 	#print(drx,now_rx)
 	if now_rx + drx > PI/2:
 		drx = PI/2 - now_rx
 	if now_rx + drx < -PI/2:
 		drx = -PI/2 - now_rx
-	$XRCamera3D.rotate_x(drx)
+	_camera.rotate_x(drx)
 
 #func _input(event: InputEvent) -> void:
 	#if runtime.mouse_capture:
@@ -66,3 +75,9 @@ func _on_mouse_motion(event: InputEventMouseMotion):
 			#if now_rx + drx < -PI/2:
 				#drx = -PI/2 - now_rx
 			#$XRCamera3D.rotate_x(drx)
+
+
+func _on_safe_box_body_exited(body: Node3D) -> void:
+	if body != self: return
+	self.velocity = Vector3.ZERO
+	self.position = Vector3(0,0.001,0)

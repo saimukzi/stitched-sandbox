@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 		velocity_ctrl = velocity_ctrl.normalized()
 	velocity_ctrl = transform.basis * velocity_ctrl
 
-	if self.is_on_floor():
+	if self.is_on_floor() and ori_y <= 0:
 		var jump = false
 		jump = jump or Input.is_action_pressed("jump")
 		jump = jump or (G.xr_enabled and _righthand.is_button_pressed("ax_button"))

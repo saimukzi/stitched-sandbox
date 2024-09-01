@@ -38,7 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
 collision_layer = 2147483649
 axis_lock_angular_y = true
 floor_constant_speed = true
-floor_max_angle = 1.39626
+floor_max_angle = 0.829031
 script = ExtResource("2_b4nir")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]

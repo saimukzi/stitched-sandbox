@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmfgt5i0lapjn"]
+[gd_scene load_steps=17 format=3 uid="uid://bmfgt5i0lapjn"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_kcc3a"]
 [ext_resource type="Script" path="res://Player.gd" id="2_b4nir"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://debug_point_group.gd" id="5_c148b"]
 [ext_resource type="Script" path="res://debug_line_group.gd" id="6_1t7ro"]
 [ext_resource type="Script" path="res://debug_coor_group.gd" id="6_n4b40"]
+[ext_resource type="PackedScene" uid="uid://b86s2wmllah3h" path="res://half_cube.blend" id="9_4g100"]
 [ext_resource type="PackedScene" uid="uid://cw1bx8ua27l02" path="res://unit_slide.blend" id="9_24ulw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y4pwh"]
@@ -38,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
 collision_layer = 2147483649
 axis_lock_angular_y = true
 floor_constant_speed = true
-floor_max_angle = 0.829031
+floor_max_angle = 1.09083
 script = ExtResource("2_b4nir")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -119,5 +120,8 @@ shape = SubResource("BoxShape3D_3fsl7")
 
 [node name="unit_slide" parent="." instance=ExtResource("9_24ulw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, -2)
+
+[node name="half_cube" parent="." instance=ExtResource("9_4g100")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
 
 [connection signal="body_exited" from="SafeBox" to="Player" method="_on_safe_box_body_exited"]

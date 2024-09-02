@@ -70,6 +70,10 @@ locale/locale_filter_mode=0
 
 3d_physics/layer_32="safe box"
 
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

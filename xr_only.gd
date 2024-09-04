@@ -1,15 +1,15 @@
 extends Node
 
-var xr_enabled : bool = false
-var screen_size : Vector2i
-var world_node : Node3D
+@export var xr_only:bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	G.xr_enabled = (OS.get_name()=="Android")
-	screen_size = DisplayServer.screen_get_size()
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if G.xr_enabled == self.xr_only:
+		self.queue_free()
+	else:
+		self.get_parent().queue_free()

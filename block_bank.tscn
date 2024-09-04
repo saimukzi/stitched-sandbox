@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dowdlcvjo4vth"]
+
+[ext_resource type="PackedScene" uid="uid://0idwxx51u50o" path="res://full_block.tscn" id="1_g83o3"]
+
+[node name="BlockBank" type="Node3D"]
+visible = false
+
+[node name="FullBlock" parent="." instance=ExtResource("1_g83o3")]

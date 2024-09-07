@@ -4,6 +4,8 @@ var xr_enabled : bool = false
 var screen_size : Vector2i
 var world_node : Node3D
 
+const PHI: float = (1+5**0.5)/2
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	G.xr_enabled = (OS.get_name()=="Android")

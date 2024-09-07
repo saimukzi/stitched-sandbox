@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpspr1yhmukak"]
+
+[ext_resource type="Script" path="res://components/preview/preview_camera.gd" id="1_d0bu2"]
+[ext_resource type="Script" path="res://components/preview/preview.gd" id="1_g2aum"]
+
+[sub_resource type="Environment" id="Environment_3xuns"]
+
+[node name="Preview" type="Node3D"]
+script = ExtResource("1_g2aum")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("1_d0bu2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3xuns")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 4, 2, 1)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, 0.5, -0.5, -3, 2, -4)
+light_energy = 0.5

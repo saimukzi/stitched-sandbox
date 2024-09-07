@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4uvp3tcns02b"]
+
+[ext_resource type="Script" path="res://components/unit_1t_cube/unit_1t_cube.gd" id="1_lqidj"]
+[ext_resource type="PackedScene" uid="uid://58ohhafsm0nv" path="res://components/unit_1t_cube/unit_1t_cube.blend" id="2_ylvkr"]
+
+[node name="Unit1tCube" type="Node3D"]
+script = ExtResource("1_lqidj")
+
+[node name="unit_1t_cube" parent="." instance=ExtResource("2_ylvkr")]
+
+[editable path="unit_1t_cube"]

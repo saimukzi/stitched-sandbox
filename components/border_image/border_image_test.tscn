@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://7nlfig8csv2u"]
+
+[ext_resource type="Script" path="res://components/border_image/mesh_instance_3d.gd" id="1_qja4x"]
+[ext_resource type="PackedScene" uid="uid://dpspr1yhmukak" path="res://components/preview/preview.tscn" id="2_mp53n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_580x6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_571q5"]
+material = SubResource("StandardMaterial3D_580x6")
+
+[node name="BorderImageTest" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_571q5")
+script = ExtResource("1_qja4x")
+
+[node name="Preview" parent="." instance=ExtResource("2_mp53n")]
+y_avg = 4.0
+y_var = 0.0

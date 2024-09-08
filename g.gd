@@ -6,6 +6,8 @@ var world_node : Node3D
 
 const PHI: float = (1+5**0.5)/2
 
+var d = {}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	G.xr_enabled = (OS.get_name()=="Android")
@@ -15,3 +17,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func set_weak(key, val) -> void:
+	d[key] = weakref(val)
+
+func get_weak(key):
+	if not d.has(key): return null
+	var ret = d[key].get_ref()
+	if ret != null: return ret
+	d.erase(key)
+	return null

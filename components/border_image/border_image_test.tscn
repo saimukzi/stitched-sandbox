@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dpspr1yhmukak" path="res://components/preview/preview.tscn" id="2_mp53n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_580x6"]
+texture_filter = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_571q5"]
 material = SubResource("StandardMaterial3D_580x6")

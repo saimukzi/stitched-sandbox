@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3x64d6sbh5cx"]
+
+[ext_resource type="Script" path="res://components/basic_block/basic_block_test.gd" id="1_mfyj3"]
+[ext_resource type="PackedScene" uid="uid://dpspr1yhmukak" path="res://components/preview/preview.tscn" id="2_de6n1"]
+
+[node name="BasicBlockTest" type="Node3D"]
+script = ExtResource("1_mfyj3")
+
+[node name="Preview" parent="." instance=ExtResource("2_de6n1")]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcm53ne5odrn0"]
+
+[ext_resource type="Script" path="res://components/basic_block/basic_block.gd" id="1_wufkb"]
+[ext_resource type="PackedScene" uid="uid://c4uvp3tcns02b" path="res://components/unit_1t_cube/unit_1t_cube.tscn" id="2_nsui6"]
+
+[node name="BasicBlock" type="Node3D"]
+script = ExtResource("1_wufkb")
+color = Color(0.498039, 0.498039, 0.498039, 1)
+
+[node name="Unit1tCube" parent="." instance=ExtResource("2_nsui6")]

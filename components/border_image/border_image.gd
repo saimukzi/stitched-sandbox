@@ -3,7 +3,7 @@ extends Object
 class_name BorderImage
 
 static func get_texture(size:int, bg_color:Color, border_color:Color, border_width:int) -> ImageTexture:
-	var key = "BorderImage.get_material:%d,%s,%s,%d"%[size,bg_color,border_color,border_width]
+	var key = "BorderImage.get_material:%d,%s,%s,%d"%[size,bg_color.to_html(true),border_color.to_html(true),border_width]
 	var ret = G.get_weak(key)
 	if ret != null: return ret
 	ret = create_texture(size,bg_color,border_color,border_width)
@@ -11,6 +11,7 @@ static func get_texture(size:int, bg_color:Color, border_color:Color, border_wid
 	return ret
 
 static func create_texture(size:int, bg_color:Color, border_color:Color, border_width:int) -> ImageTexture:
+	#print('SRHKQAHCTP create_texture')
 	var image = create_image(size,bg_color,border_color,border_width)
 	var imageTexture = ImageTexture.create_from_image(image)
 	return imageTexture

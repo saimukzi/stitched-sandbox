@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://ol0sv5xdys4d"]
+[gd_scene load_steps=5 format=3 uid="uid://ol0sv5xdys4d"]
 
 [ext_resource type="PackedScene" uid="uid://c4uvp3tcns02b" path="res://components/unit_1t_cube/unit_1t_cube.tscn" id="2_62fh1"]
 [ext_resource type="PackedScene" uid="uid://dpspr1yhmukak" path="res://components/preview/preview.tscn" id="2_mfyd1"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gde5m"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0h353"]
+albedo_color = Color(1, 0, 0, 1)
 
 [node name="Unit1tCubeTest" type="Node3D"]
 
 [node name="Unit1tCube" parent="." instance=ExtResource("2_62fh1")]
+material = SubResource("StandardMaterial3D_gde5m")
+
+[node name="Unit1tCube2" parent="." instance=ExtResource("2_62fh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, -1)
 material = SubResource("StandardMaterial3D_0h353")
 
 [node name="Preview" parent="." instance=ExtResource("2_mfyd1")]

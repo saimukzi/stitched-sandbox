@@ -12,8 +12,9 @@ func _ready() -> void:
 	_update_material()
 
 func _update_material():
-	if $Unit1tCube == null: return
-	$Unit1tCube.material = _get_material(color)
+	var unit_1t_cube = get_node_or_null('Unit1tCube')
+	if unit_1t_cube == null: return
+	unit_1t_cube.material = _get_material(color)
 	#var material:Material = $Unit1tCube.material
 	#material = material.duplicate()
 	#$Unit1tCube.material = material

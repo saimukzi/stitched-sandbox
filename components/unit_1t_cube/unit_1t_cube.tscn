@@ -5,7 +5,12 @@
 
 [node name="Unit1tCube" type="Node3D"]
 script = ExtResource("1_lqidj")
+rm_target = NodePath(".")
 
 [node name="unit_1t_cube" parent="." instance=ExtResource("2_ylvkr")]
+
+[node name="StaticBody3D" parent="unit_1t_cube/Cube" index="0"]
+collision_layer = 3
+collision_mask = 0
 
 [editable path="unit_1t_cube"]

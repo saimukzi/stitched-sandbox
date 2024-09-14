@@ -17,7 +17,9 @@ func _physics_process(delta):
 		var col_pos = $RayCast3D.get_collision_point()
 		var col_nor = $RayCast3D.get_collision_normal()
 		var new_cube_pos = (col_pos+col_nor*0.5).floor()
-		var nc = _get_full_block().duplicate()
+		#var nc = _get_full_block().duplicate()
+		var color = Color(randf(),randf(),randf())
+		var nc = BasicBlock.create(color)
 		nc.position = new_cube_pos
 		G.world_node.add_child(nc)
 

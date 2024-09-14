@@ -8,3 +8,4 @@ script = ExtResource("1_wufkb")
 color = Color(0.498039, 0.498039, 0.498039, 1)
 
 [node name="Unit1tCube" parent="." instance=ExtResource("2_nsui6")]
+rm_target = NodePath("..")

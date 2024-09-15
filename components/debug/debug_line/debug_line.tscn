@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://hqv57p1dcd7c"]
+
+[ext_resource type="Script" path="res://components/debug/debug_line/debug_line.gd" id="1_4nqk2"]
+[ext_resource type="Script" path="res://components/y_bill_board/y_bill_board_p.gd" id="3_3j42d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0e211"]
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f1u7m"]
+material = SubResource("StandardMaterial3D_0e211")
+flip_faces = true
+size = Vector2(0.02, 22)
+orientation = 2
+
+[node name="DebugLine" type="Node3D"]
+script = ExtResource("1_4nqk2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_f1u7m")
+skeleton = NodePath("")
+
+[node name="YBillBoardP" type="Node" parent="MeshInstance3D"]
+script = ExtResource("3_3j42d")

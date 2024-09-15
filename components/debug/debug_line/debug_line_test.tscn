@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dviigg2161kdb"]
+
+[ext_resource type="PackedScene" uid="uid://dpspr1yhmukak" path="res://components/preview/preview.tscn" id="1_1d8cv"]
+[ext_resource type="Script" path="res://components/debug/debug_line/debug_line_test.gd" id="1_71l8u"]
+[ext_resource type="PackedScene" uid="uid://hqv57p1dcd7c" path="res://components/debug/debug_line/debug_line.tscn" id="2_ims6a"]
+
+[node name="DebugLineTest" type="Node2D"]
+script = ExtResource("1_71l8u")
+
+[node name="Preview" parent="." instance=ExtResource("1_1d8cv")]
+
+[node name="DebugLineX" parent="." instance=ExtResource("2_ims6a")]
+
+[node name="DebugLineY" parent="." instance=ExtResource("2_ims6a")]
+axis = 1
+
+[node name="DebugLineZ" parent="." instance=ExtResource("2_ims6a")]
+axis = 2

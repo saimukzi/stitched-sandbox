@@ -3,6 +3,7 @@ extends Node
 var xr_enabled : bool = false
 var screen_size : Vector2i
 var world_node : Node3D
+var camera_global_position_4i : Vector3
 
 const PHI: float = (1+5**0.5)/2
 
@@ -16,7 +17,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var camera = get_viewport().get_camera_3d()
+	camera_global_position_4i = (camera.global_position/4).floor()*4
 
 func set_weak(key, val) -> void:
 	d[key] = weakref(val)

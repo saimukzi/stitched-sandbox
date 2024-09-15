@@ -1,6 +1,6 @@
 extends Node3D
 
-const debug_line_tscn = preload("res://debug_line.tscn")
+const debug_line_tscn = preload("res://components/debug/debug_line/debug_line.tscn")
 
 var camera_global_position_4i : Vector3
 

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://62wmqvrre8ia"]
+
+[ext_resource type="PackedScene" uid="uid://dpspr1yhmukak" path="res://components/preview/preview.tscn" id="1_0j5rw"]
+[ext_resource type="Script" path="res://components/y_bill_board/y_bill_board_p.gd" id="2_2kkba"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_peyv8"]
+flip_faces = true
+orientation = 2
+
+[node name="YBillBoardTest" type="Node2D"]
+
+[node name="Preview" parent="." instance=ExtResource("1_0j5rw")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_peyv8")
+
+[node name="YBillBoard" type="Node" parent="MeshInstance3D"]
+script = ExtResource("2_2kkba")

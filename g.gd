@@ -14,7 +14,7 @@ var d = {}
 func _ready() -> void:
 	G.xr_enabled = (OS.get_name()=="Android")
 	screen_size = DisplayServer.screen_get_size()
-
+	find_block_group(get_tree().current_scene)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -30,3 +30,12 @@ func get_weak(key):
 	if ret != null: return ret
 	d.erase(key)
 	return null
+
+func find_block_group(node:Node) -> bool:
+	if node.get_meta('block_group',false):
+		block_group = node
+		return true
+	for c in node.get_children():
+		if find_block_group(c):
+			return true
+	return false

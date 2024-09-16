@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dus4wcplbra2m"]
-
-[ext_resource type="Script" path="res://components/block_group/block_group.gd" id="1_j5vca"]
-
-[node name="BlockGroup" type="Node3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-script = ExtResource("1_j5vca")

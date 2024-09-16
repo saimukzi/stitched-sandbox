@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc43auumnevad"]
+[gd_scene load_steps=3 format=3 uid="uid://bc43auumnevad"]
 
 [ext_resource type="PackedScene" uid="uid://dpspr1yhmukak" path="res://components/preview/preview.tscn" id="1_r1q11"]
 [ext_resource type="Script" path="res://components/block_group/block_group_test.gd" id="1_srdqn"]
-[ext_resource type="Script" path="res://components/block_group/block_group.gd" id="3_vwfts"]
 
 [node name="BlockGroupTest" type="Node3D"]
 script = ExtResource("1_srdqn")
@@ -11,4 +10,4 @@ script = ExtResource("1_srdqn")
 
 [node name="BlockGroup" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-script = ExtResource("3_vwfts")
+metadata/block_group = true

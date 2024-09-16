@@ -15,6 +15,8 @@ func _ready() -> void:
 	G.xr_enabled = (OS.get_name()=="Android")
 	screen_size = DisplayServer.screen_get_size()
 	find_block_group(get_tree().current_scene)
+	if self.block_group == null:
+		push_warning('RCMKEJDAAD self.block_group == null')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

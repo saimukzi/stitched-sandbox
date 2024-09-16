@@ -4,6 +4,7 @@ var xr_enabled : bool = false
 var screen_size : Vector2i
 var world_node : Node3D
 var camera_global_position_4i : Vector3
+var block_group : Node3D
 
 const PHI: float = (1+5**0.5)/2
 

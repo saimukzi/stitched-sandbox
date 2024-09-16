@@ -15,6 +15,8 @@ func _ready() -> void:
 	var gv:Vector3 = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 	
 	_jump_vec = -((2*JUMP_HEIGHT*g)**0.5)*gv
+	
+	recursive_meta_player(self)
 
 #const JUMP_VEC = Gravity.
 
@@ -96,3 +98,16 @@ func _on_safe_box_body_exited(body: Node3D) -> void:
 	if body != self: return
 	self.velocity = Vector3.ZERO
 	self.position = Vector3(0,0.001,0)
+
+
+func add_block(pos: Vector3):
+	var color = Color(randf(),randf(),randf())
+	var nc = BasicBlock.create(color)
+	nc.position = pos
+	G.block_group.add_child(nc)
+
+
+func recursive_meta_player(node: Node):
+	node.set_meta('player_node', self)
+	for c in node.get_children():
+		recursive_meta_player(c)

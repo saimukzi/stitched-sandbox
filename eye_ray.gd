@@ -11,17 +11,19 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("add_block"):
+		if G.block_group == null: return
 		var is_colliding = $RayCast3D.is_colliding()
 		if not is_colliding:
 			return
 		var col_pos = $RayCast3D.get_collision_point()
 		var col_nor = $RayCast3D.get_collision_normal()
-		var new_cube_pos = (col_pos+col_nor*0.5).floor()
-		#var nc = _get_full_block().duplicate()
-		var color = Color(randf(),randf(),randf())
-		var nc = BasicBlock.create(color)
-		nc.position = new_cube_pos
-		G.world_node.add_child(nc)
+		var col_pos_nor = col_pos + col_nor
+		
+		var col_pos_bg = G.block_group.to_local(col_pos)
+		var col_pos_nor_bg = G.block_group.to_local(col_pos_nor)
+		var col_nor_bg = (col_pos_nor_bg-col_pos_bg).normalized()
+		var new_block_pos_bg = (col_pos_bg+col_nor_bg*0.5).floor()
+		self.get_meta('player_node').add_block(new_block_pos_bg)
 
 	if Input.is_action_just_pressed("remove_block"):
 		var is_colliding = $RayCast3D.is_colliding()
@@ -32,9 +34,3 @@ func _physics_process(delta):
 		if rm_node_path != null:
 			var rm_obj = col_obj.get_node(rm_node_path)
 			rm_obj.queue_free()
-
-var _full_block
-func _get_full_block():
-	if _full_block == null:
-		_full_block = G.world_node.get_node("BlockBank/FullBlock")
-	return _full_block

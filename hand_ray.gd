@@ -35,13 +35,15 @@ func _physics_process(delta):
 	#can_new_cube = true
 	if (G.xr_enabled and trigger_up and _right_hand_node.is_button_pressed("trigger_click")):
 		trigger_up = false
+
 		var col_nor = $RayCast3D.get_collision_normal()
-		var new_cube_pos = (col_pos+col_nor*0.5).floor()
-		#var nc = _new_cube_node.duplicate()
-		var color = Color(randf(),randf(),randf())
-		var nc = BasicBlock.create(color)
-		nc.position = new_cube_pos
-		get_node('/root/Main').add_child(nc)
+		var col_pos_nor = col_pos + col_nor
+		
+		var col_pos_bg = G.block_group.to_local(col_pos)
+		var col_pos_nor_bg = G.block_group.to_local(col_pos_nor)
+		var col_nor_bg = (col_pos_nor_bg-col_pos_bg).normalized()
+		var new_block_pos_bg = (col_pos_bg+col_nor_bg*0.5).floor()
+		self.get_meta('player_node').add_block(new_block_pos_bg)
 
 	if (G.xr_enabled and trigger_up and _right_hand_node.is_button_pressed("grip_click")):
 		trigger_up = false
